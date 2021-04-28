@@ -1344,12 +1344,12 @@ res.json(loghandler.invalidKey)
 
 
 router.get('/artinama', async (req, res, next) => {
-        var apikey = req.query.apikey,
+        var Apikey = req.query.apikey,
             nama = req.query.nama
             
 	if(!Apikey) return res.json(loghandler.notparam)
 	if(listkey.includes(Apikey)){
-    if (!nama) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter nama"})
+        if(!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
 
        fetch(encodeURI(`https://videfikri.com/api/primbon/artinama/?nama=${nama}`))
         .then(response => response.json())
