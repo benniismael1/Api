@@ -1077,6 +1077,8 @@ router.get('/muslim/niatashar', async (req, res, next) => {
 res.json(loghandler.invalidKey)
 }
 })
+
+
 router.get('/muslim/jadwalshalat', async (req, res, next) => {
         var Apikey = req.query.apikey,
             kota = req.query.kota
@@ -1325,6 +1327,31 @@ router.get('/fakedata', async (req, res, next) => {
         if(!country) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter country"})
 
        fetch(encodeURI(`https://fakename-api-zhirrr.vercel.app/api/fakename?country=${country}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.json(loghandler.invalidKey)
+}
+})
+
+
+router.get('/artinama', async (req, res, next) => {
+        var apikey = req.query.apikey,
+            nama = req.query.nama
+            
+	if(!Apikey) return res.json(loghandler.notparam)
+	if(listkey.includes(Apikey)){
+    if (!nama) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter nama"})
+
+       fetch(encodeURI(`https://videfikri.com/api/primbon/artinama/?nama=${nama}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
