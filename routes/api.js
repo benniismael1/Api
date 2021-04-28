@@ -2334,6 +2334,118 @@ router.get('/textpro/porn-hub', async(req, res, next) => {
   }
 });
 
+router.get('/textpro/cloud', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-realistic-cloud-text-effect-online-free-999.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/summer', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/write-in-sand-summer-beach-free-online-991.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/sandwriting', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/sand-writing-text-effect-online-990.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/sandengraved', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/sand-engraved-3d-text-effect-989.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
 /*
 @AKHIR TEXTPRO ME
 */
