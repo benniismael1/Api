@@ -2446,6 +2446,119 @@ router.get('/textpro/sandengraved', async(req, res, next) => {
   }
 });
 
+router.get('/textpro/summery', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-a-summery-sand-writing-text-effect-988.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/foil', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/foil-balloon-text-effect-for-birthday-987.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/glue', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-3d-glue-text-effect-with-realistic-style-986.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/minion', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/minion-text-effect-3d-online-978.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+
 /*
 @AKHIR TEXTPRO ME
 */
