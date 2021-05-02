@@ -1640,6 +1640,41 @@ router.get('/anime/loli', async(req, res, next) => {
 });
 
 
+router.get('/anime/husbu', async(req, res, next) => {
+    var apikey = req.query.apikey
+    if (!apikey) return res.json(loghandler.notparam)
+    if(listkey.includes(apikey)){
+    try {
+        var options = {
+            url: "http://results.dogpile.com/serp?qc=images&q= " + "Husbu",
+            method: "GET",
+            headers: {
+                "Accept": "text/html",
+                "User-Agent": "Chrome"
+            }
+        }
+        request(options, function(error, response, responseBody) {
+            if (error) return
+
+            $ = cheerio.load(responseBody)
+            var links = $(".image a.link")
+            var cari = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"))
+            if (!cari.length) return
+            var hasil = cari[Math.floor(Math.random() * cari.length)]
+        res.json({
+              status: true,
+              code: 200,
+              creator: `${creator}`,
+              result: hasil
+            })
+        })
+    } catch (e) {}
+    } else {
+      res.json(loghandler.invalidKey)
+    }
+});
+
+
 router.get('/anime/manga', async (req, res, next) => {
         var Apikey = req.query.apikey,
 	    search = req.query.search
