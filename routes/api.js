@@ -1818,15 +1818,19 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
 })
 
 router.get('/kuis/tebakbendera', async (req, res, next) => {
-        var Apikey = req.query.apikey,
+        var apikeyInput = req.query.apikey
             
-	if(!Apikey) return res.json(loghandler.notparam)
-	if(listkey.includes(Apikey)){
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != 'beniismael') return res.json(loghandler.invalidKey)
 
        fetch(encodeURI(`https://raw.githubusercontent.com/benniismael1/Menu-Api/main/tebakbendera.json`))
         .then(response => response.json())
         .then(data => {
-        var result = data;
+        var random = Math.floor(Math.random() * json.length)
+        var Author = json[random].result.Author
+        var bendera = json[random].result.bendera
+        var jawaban = json[random].result.jawaban
+        var poin = json[random].result.poin
              res.json({
                  result
              })
