@@ -1817,31 +1817,6 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
   }
 })
 
-router.get('/kuis/tebakbendera', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput != 'beniismael') return res.json(loghandler.invalidKey)
-
-       fetch(encodeURI(`https://raw.githubusercontent.com/benniismael1/Menu-Api/main/tebakbendera.json`))
-        .then(response => response.json())
-        .then(data => {
-        var random = Math.floor(Math.random() * json.length)
-        var Author = json[random].result.Author
-        var bendera = json[random].result.bendera
-        var jawaban = json[random].result.jawaban
-        var poin = json[random].result.poin
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-} else {
-res.json(loghandler.invalidKey)
-}
-})
 
 /**
 * @Maker
