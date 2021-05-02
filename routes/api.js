@@ -1818,7 +1818,7 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
 })
 
 router.get('/kuis/tebakbendera', async (req, res, next) => {
-        var apikey = req.query.apikey
+        var Apikey = req.query.apikey,
             
 	if(!Apikey) return res.json(loghandler.notparam)
 	if(listkey.includes(Apikey)){
