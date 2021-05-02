@@ -1823,7 +1823,7 @@ router.get('/kuis/tebakbendera', async (req, res, next) => {
 	if(!apikey) return res.json(loghandler.notparam)
   if(listkey.includes(apikey)){
 
-       fetch(encodeURI(`https://raw.githubusercontent.com/reyhangans/Menu-Api/main/tebakbendera.json`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/benniismael1/Menu-Api/main/tebakbendera.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
