@@ -2510,9 +2510,9 @@ router.get('/textpro/sandwriting', async(req, res, next) => {
   
   if(listkey.includes(apikey)){
     zrapi 
-const axios = require("axios")
-axios.get("https://textpro.me/sand-writing-text-effect-online-990.html")
-  ])
+.textpro("https://textpro.me/sand-engraved-3d-text-effect-989.html", [
+    text,
+])
   .then((data) => {
     res.json({
       status: true,
