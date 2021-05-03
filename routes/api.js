@@ -756,6 +756,30 @@ res.json(loghandler.invalidKey)
 })
 
 
+router.get('/artinama', async (req, res, next) => {
+        var Apikey = req.query.apikey,
+            nama = req.query.nama
+            
+	if (!Apikey) return res.json(res.sendFile(invalidKey))
+	if(listkey.includes(Apikey)){
+        if(!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
+
+       fetch(encodeURI(`https://videfikri.com/api/primbon/artinama/?nama=${nama}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.json(loghandler.invalidKey)
+}
+})
+
 router.get('/muslim/hadits', async (req, res, next) => {
         var Apikey = req.query.apikey,
             kitab = req.query.kitab,
