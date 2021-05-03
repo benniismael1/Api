@@ -2174,1041 +2174,878 @@ router.get("/photooxy/butterfly", async(req, res, next) => {
 /*
 @ TEXTPROME
 */
-router.get('/textpro/logo-wolf', async(req, res, next) => {
-  const apikey = req.query.apikey;
-  const text = req.query.text;
+router.get("/textpro/logo-wolf", async(req, res, next) => {
+  const text1 = req.query.text1;
   const text2 = req.query.text2;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
   if(!text2) return res.json(loghandler.nottext2)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/create-wolf-logo-black-white-937.html", [
-    text, text2
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/natural-leaves', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/natural-leaves-text-effect-931.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tlogo-wolf(text1, text2)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/logo-wolf2', async(req, res, next) => {
-
+router.get("/textpro/natural-leaves", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  tnatural-leaves(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
 
-  const text = req.query.text;
+router.get("/textpro/logo-wolf2", async(req, res, next) => {
+  const text1 = req.query.text1;
   const text2 = req.query.text2;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
   if(!text2) return res.json(loghandler.nottext2)
-  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/create-wolf-logo-galaxy-online-936.html", [
-    text, text2
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tlogo-wolf2(text1, text2)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/logo-wolf', async(req, res, next) => {
-
+router.get("/textpro/matrix", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  tmatrix(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
 
-  const text = req.query.text;
+router.get("/textpro/firework", async(req, res, next) => {
+  const text1 = req.query.text;
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  tfirework(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
+
+router.get("/textpro/thunder", async(req, res, next) => {
+  const text1 = req.query.text;
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  tthunder(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
+
+router.get("/textpro/black-pink", async(req, res, next) => {
+  const text1 = req.query.text;
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  tblack-pink(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
+
+router.get("/textpro/drop-water", async(req, res, next) => {
+  const text1 = req.query.text;
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  tdrop-water(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
+
+router.get("/textpro/tchristmas", async(req, res, next) => {
+  const text1 = req.query.text;
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  tchristmas(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
+
+router.get("/textpro/3d-gradient", async(req, res, next) => {
+  const text1 = req.query.text;
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  t3d-gradient(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
+
+router.get("/textpro/porn-hub", async(req, res, next) => {
+  const text1 = req.query.text1;
   const text2 = req.query.text2;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
   if(!text2) return res.json(loghandler.nottext2)
-  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/matrix-style-text-effect-online-884.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tporn-hub(text1, text2)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/logo-wolf', async(req, res, next) => {
 
+router.get("/textpro/cloud", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  const text2 = req.query.text2;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  if(!text2) return res.json(loghandler.nottext2)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/firework-sparkle-text-effect-930.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tcloud(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/thunder', async(req, res, next) => {
-
+router.get("/textpro/summer", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  const text2 = req.query.text2;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  if(!text2) return res.json(loghandler.nottext2)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/thunder-text-effect-online-881.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tsummer(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/black-pink', async(req, res, next) => {
-
+router.get("/textpro/sandwriting", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tsandwriting(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/drop-water', async(req, res, next) => {
-
-
-
+router.get("/textpro/sandengraved", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/dropwater-text-effect-872.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tsandengraved(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/christmas', async(req, res, next) => {
-
+router.get("/textpro/summery", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/create-a-christmas-holiday-snow-text-effect-1007.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tsummery(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/3d-gradient', async(req, res, next) => {
+router.get("/textpro/foil", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/3d-gradient-text-effect-online-free-1002.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tfoil(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/maker/porn-hub', async (req, res, next) => {
-     const apikey = req.query.apikey;
-
-  const text = req.query.text1;
-  const text2 = req.query.text2;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext1)
-  if(!text2) return res.json(loghandler.nottext2)
-  
-     if(listkey.includes(apikey)) {
-    let hasil = 'https://api.zeks.xyz/api/phlogo?text1=${text}&text2=${text2}&apikey=apivinz' 
-    data = await fetch(hasil).then(v => v.buffer())
-    await fs.writeFileSync(__path +'/tmp/phlogo.jpeg', data)
-    res.sendFile(__path +'/tmp/phlogo.jpeg')
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/cloud', async(req, res, next) => {
-
+router.get("/textpro/glue", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/create-realistic-cloud-text-effect-online-free-999.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tglue(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/summer', async(req, res, next) => {
-
+router.get("/textpro/minion", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/write-in-sand-summer-beach-free-online-991.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tminion(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/sandwriting', async(req, res, next) => {
-
+router.get("/textpro/deluxe", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-.textpro("https://textpro.me/sand-engraved-3d-text-effect-989.html", [
-    text,
-])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tdeluxe(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/sandengraved', async(req, res, next) => {
-
+router.get("/textpro/xmas", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/sand-engraved-3d-text-effect-989.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  txmas(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/summery', async(req, res, next) => {
-
+router.get("/textpro/blood", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/create-a-summery-sand-writing-text-effect-988.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tblood(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/foil', async(req, res, next) => {
-
+router.get("/textpro/halloween", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/foil-balloon-text-effect-for-birthday-987.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  thalloween(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/glue', async(req, res, next) => {
-
+router.get("/textpro/wicker", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/create-3d-glue-text-effect-with-realistic-style-986.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  twicker(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/minion', async(req, res, next) => {
-
+router.get("/textpro/lava", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/minion-text-effect-3d-online-978.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tlava(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/deluxe', async(req, res, next) => {
-
+router.get("/textpro/robot", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/deluxe-silver-text-effect-970.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  trobot(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/xmas', async(req, res, next) => {
-
+router.get("/textpro/toxic", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/xmas-cards-3d-online-942.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  ttoxic(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/blood', async(req, res, next) => {
-
+router.get("/textpro/chocolate", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/blood-text-on-the-frosted-glass-941.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tchocolate(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/halloween', async(req, res, next) => {
-
+router.get("/textpro/strawberry", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/halloween-fire-text-effect-940.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tstrawberry(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/wicker', async(req, res, next) => {
-
+router.get("/textpro/ikankoi", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/wicker-text-effect-online-932.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tikankoi(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/lava', async(req, res, next) => {
-
+router.get("/textpro/bread", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/lava-text-effect-online-914.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tbread(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/robot', async(req, res, next) => {
-
+router.get("/textpro/horror", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/robot-r2-d2-text-effect-903.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  thorror(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/toxic', async(req, res, next) => {
-
+router.get("/textpro/bokeh", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/toxic-text-effect-online-901.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tbokeh(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/chocolate', async(req, res, next) => {
-
+router.get("/textpro/fruit", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/chocolate-cake-text-effect-890.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tfruit(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/strawberry', async(req, res, next) => {
-
+router.get("/textpro/bagel", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/strawberry-text-effect-online-889.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tbagel(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/ikankoi', async(req, res, next) => {
-
+router.get("/textpro/biscuit", async(req, res, next) => {
+  const text1 = req.query.text;
   const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
+  if(!text1) return res.json(loghandler.nottext1)
   if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
   if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/koi-fish-text-effect-online-888.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
+  tbiscuit(text1)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
     })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
 });
 
-router.get('/textpro/bread', async(req, res, next) => {
 
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/bread-text-effect-online-887.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/horror', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/horror-gift-text-effect-866.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/bokeh', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/bokeh-text-effect-876.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/dropwater', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/dropwater-text-effect-872.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/fruit', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/fruit-juice-text-effect-861.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/bagel', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/bagel-text-effect-857.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
-
-router.get('/textpro/biscuit', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
-
-  const text = req.query.text;
-  
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(!text) return res.json(loghandler.nottext)
-  
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/biscuit-text-effect-858.html", [
-    text,
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
-  } else {
-    res.json(loghandler.invalidKey)
-  }
-});
 
 /*
 @AKHIR TEXTPRO ME
