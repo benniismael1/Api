@@ -45,6 +45,45 @@ var {
 } = require("./../lib/utils/photooxy");
 
 var {
+  tlogo-wolf,
+  tnatural-leaves,
+  tlogo-wolf2,
+  tmatrix,
+  tfirework,
+  tthunder,
+  tblack-pink,
+  tdrop-water,
+  tchristmas,
+  t3d-gradient,
+  tporn-hub,
+  tcloud,
+  tsummer,
+  tsandwriting,
+  tsandengraved,
+  tsummery,
+  tfoil,
+  tglue,
+  tminion,
+  tdeluxe,
+  txmas,
+  tblood,
+  thalloween,
+  twicker,
+  tlava,
+  trobot,
+  ttoxic,
+  tchocolate,
+  tstrawberry,
+  tikankoi,
+  tbread,
+  thorror,
+  tbokeh,
+  tfruit,
+  tbagel,
+  tbiscuit
+} = require("./../lib/utils/textpro");
+
+var {
   igStalk,
   igDownload
 } = require("./../lib/utils/ig");
