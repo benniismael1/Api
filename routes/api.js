@@ -45,45 +45,6 @@ var {
 } = require("./../lib/utils/photooxy");
 
 var {
-  tlogo-wolf,
-  tnatural-leaves,
-  tlogo-wolf2,
-  tmatrix,
-  tfirework,
-  tthunder,
-  tblack-pink,
-  tdrop-water,
-  tchristmas,
-  t3d-gradient,
-  tporn-hub,
-  tcloud,
-  tsummer,
-  tsandwriting,
-  tsandengraved,
-  tsummery,
-  tfoil,
-  tglue,
-  tminion,
-  tdeluxe,
-  txmas,
-  tblood,
-  thalloween,
-  twicker,
-  tlava,
-  trobot,
-  ttoxic,
-  tchocolate,
-  tstrawberry,
-  tikankoi,
-  tbread,
-  thorror,
-  tbokeh,
-  tfruit,
-  tbagel,
-  tbiscuit
-} = require("./../lib/utils/textpro");
-
-var {
   igStalk,
   igDownload
 } = require("./../lib/utils/ig");
@@ -2174,876 +2135,94 @@ router.get("/photooxy/butterfly", async(req, res, next) => {
 /*
 @ TEXTPROME
 */
-router.get("/textpro/logo-wolf", async(req, res, next) => {
-  const text1 = req.query.text1;
-  const text2 = req.query.text2;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!text2) return res.json(loghandler.nottext2)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tlogo-wolf(text1, text2)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
 
-router.get("/textpro/natural-leaves", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tnatural-leaves(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
+    router.get('/textmaker', async (req, res, next) => {
+        var theme = req.query.theme,
+             text = req.query.text,
+             text2 = req.query.text2,
+             text3 = req.query.text3,
+             apikey = req.query.apikey;
+        
+	if(!apikey) return res.json(res.sendFile(invalidKey))
+    if(listkey.includes(apikey)){
+        if (!theme) return res.json(loghandler.nottheme)
+        if (theme != 'logo-wolf' && theme != 'natural-leaves') return res.json(loghandler.notheme)
+        if (!text) return res.json(loghandler.nottext)
 
-router.get("/textpro/logo-wolf2", async(req, res, next) => {
-  const text1 = req.query.text1;
-  const text2 = req.query.text2;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!text2) return res.json(loghandler.nottext2)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tlogo-wolf2(text1, text2)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/matrix", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tmatrix(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/firework", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tfirework(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/thunder", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tthunder(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/black-pink", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tblack-pink(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/drop-water", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tdrop-water(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/tchristmas", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tchristmas(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/3d-gradient", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  t3d-gradient(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/porn-hub", async(req, res, next) => {
-  const text1 = req.query.text1;
-  const text2 = req.query.text2;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!text2) return res.json(loghandler.nottext2)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tporn-hub(text1, text2)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-
-router.get("/textpro/cloud", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tcloud(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/summer", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tsummer(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/sandwriting", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tsandwriting(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/sandengraved", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tsandengraved(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/summery", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tsummery(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/foil", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tfoil(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/glue", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tglue(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/minion", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tminion(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/deluxe", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tdeluxe(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/xmas", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  txmas(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/blood", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tblood(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/halloween", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  thalloween(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/wicker", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  twicker(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/lava", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tlava(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/robot", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  trobot(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/toxic", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  ttoxic(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/chocolate", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tchocolate(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/strawberry", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tstrawberry(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/ikankoi", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tikankoi(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/bread", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tbread(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/horror", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  thorror(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/bokeh", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tbokeh(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/fruit", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tfruit(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/bagel", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tbagel(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
-
-router.get("/textpro/biscuit", async(req, res, next) => {
-  const text1 = req.query.text;
-  const apikey = req.query.apikey;
-  if(!text1) return res.json(loghandler.nottext1)
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  tbiscuit(text1)
-    .then((data) => {
-      const result = {
-        status: true,
-        code: 200,
-        creator: `${creator}`,
-        result: data.url
-      }
-      res.json(result)
-    })
-    .catch((error) => {
-      res.json(error)
-    });
-    } else {
-    	res.json(loghandler.invalidKey)
-    }
-});
+        if (theme == 'logo-wolf') {
+        	if (!text2) return res.json(loghandler.nottext2)
+            try {
+            request.post({
+                url: "https://textpro.me/create-wolf-logo-black-white-937.html",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `text_1=${text}&text_2=${text2}&login=OK`,
+                }, (e,r,b) => {
+                    if (!e) {
+                        $ = cheerio.load(b)
+                        $(".thumbnail").find("img").each(function() {
+                            h = $(this).attr("src")
+                            var result = "https://textpro.me/"+h
+                            fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=93f5c8966cfaf3ca19051ee9f85c14f3&image=${result}&name=${randomTextNumber}`))
+                                .then(response => response.json())
+                                .then(data => {
+                                    var urlnya = data.data.url,
+                                        delete_url = data.data.delete_url;
+                                        res.json({
+                                            status : true,
+                                            creator : `${creator}`,
+                                            message : `jangan lupa follow ${creator}`,
+                                            result:{
+                                                url:urlnya,
+                                                delete_url: delete_url,
+                                                info: 'url akan hilang setelah 2 menit'
+                                            }
+                                        })
+                                })
+                        })
+                    }
+                })
+                } catch (e) {
+                	console.log(e);
+                res.json(loghandler.error)
+                }
+                } else if (theme == 'natural-leaves') {
+            request.post({
+                url: "https://textpro.me/natural-leaves-text-effect-931.html",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `text_1=${text}&login=OK`,
+                }, (e,r,b) => {
+                    if (!e) {
+                        $ = cheerio.load(b)
+                        $(".thumbnail").find("img").each(function() {
+                            h = $(this).attr("src")
+                            var result = "https://textpro.me/"+h
+                            fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=${randomTextNumber}`))
+                                .then(response => response.json())
+                                .then(data => {
+                                    var urlnya = data.data.url,
+                                        delete_url = data.data.delete_url;
+                                        res.json({
+                                            status : true,
+                                            creator : `${creator}`,
+                                            message : `jangan lupa follow ${creator}`,
+                                            result:{
+                                                url:urlnya,
+                                                delete_url: delete_url,
+                                                info: 'url akan hilang setelah 2 menit'
+                                            }
+                                        })
+                                })
+                        })
+                    }
+                }) 
+        } else {
+            res.json(loghandler.error)
+        }
+})
 
 
 
