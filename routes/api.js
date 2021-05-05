@@ -26,6 +26,7 @@ var { fetchJson } = require(__path + '/lib/fetcher.js');
 var options = require(__path + '/lib/options.js');
 var {
 	Searchnabi,
+        Arti nama,
 	Gempa
 } = require('./../lib');
 
@@ -1702,6 +1703,22 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
   res.json(loghandler.invalidKey)
   }
 })
+
+router.get("/artinama", async (req, res) => {
+  var apikey = req.query.apikey;
+  var nama = req.query.q;
+
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  if (!nama) return res.json(respon.param);
+  ArtiNama(nama)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
 
 /**
 * @Maker
