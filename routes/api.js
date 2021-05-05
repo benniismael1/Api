@@ -74,7 +74,6 @@ var {
 } = require('./../lib/utils/tools');
 
 var tebakGambar = require('./../lib/utils/tebakGambar');
-var artinama = require('./../lib/utils/artinama');
 
 var cookie = process.env.COOCKIE
 /*
@@ -1704,21 +1703,53 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
   }
 })
 
-router.get("/artinama", async (req, res) => {
-  var apikey = req.query.apikey;
-  var nama = req.query.nama;
+router.get('/artinama', async (req, res, next) => {
+     var Apikey = req.query.apikey,
+             Nama = req.query.nama
+            
+	if(!Apikey) return res.sendFile(invalidKey)
+	if(listkey.includes(Apikey)){
+    if (!nama) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter nama "})
 
-  if(!apikey) return res.json(res.sendFile(invalidKey))
-  if(listkey.includes(apikey)){
-  if (!nama) return res.json(loghandler.notnama);
-  ArtiNama(nama)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-});
+       fetch(encodeURI(`https://www.primbon.com/arti_nama.php?nama1=${nama}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.json(loghandler.invalidKey)
+}
+})
+
+router.get('/artimimpi', async (req, res, next) => {
+     var Apikey = req.query.apikey,
+            Mimpi = req.query.mimpi
+            
+	if(!Apikey) return res.sendFile(invalidKey)
+	if(listkey.includes(Apikey)){
+    if (!mimpi) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter mimpi "})
+
+       fetch(encodeURI(`https://www.primbon.com/tafsir_mimpi.php?mimpi=${mimpi}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.json(loghandler.invalidKey)
+}
+})
 
 /**
 * @Maker
