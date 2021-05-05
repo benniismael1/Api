@@ -1711,7 +1711,7 @@ router.get('/artinama', async (req, res, next) => {
 	if(listkey.includes(Apikey)){
     if (!nama) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter q "})
 
-       fetch(encodeURI(`https://api.masagus.space/primbon/artinama?q=${q}`))
+       fetch(encodeURI(`https://api.masagus.space/primbon/artinama?q=${nama}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -1735,7 +1735,7 @@ router.get('/artimimpi', async (req, res, next) => {
 	if(listkey.includes(Apikey)){
     if (!mimpi) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter mimpi "})
 
-       fetch(encodeURI(`https://api.masagus.space/primbon/artimimpi?q=${q}`))
+       fetch(encodeURI(`https://api.masagus.space/primbon/artimimpi?q=${mimpi}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
