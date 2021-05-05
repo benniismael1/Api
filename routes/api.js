@@ -756,30 +756,6 @@ res.json(loghandler.invalidKey)
 })
 
 
-router.get('/artinama', async (req, res, next) => {
-        var Apikey = req.query.apikey,
-            nama = req.query.nama
-            
-	if (!Apikey) return res.json(res.sendFile(invalidKey))
-	if(listkey.includes(Apikey)){
-        if(!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
-
-       fetch(encodeURI(`https://videfikri.com/api/primbon/artinama/?nama=${nama}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-} else {
-res.json(loghandler.invalidKey)
-}
-})
-
 router.get('/muslim/hadits', async (req, res, next) => {
         var Apikey = req.query.apikey,
             kitab = req.query.kitab,
@@ -1655,110 +1631,6 @@ router.get('/anime/loli', async(req, res, next) => {
 });
 
 
-router.get('/anime/husbu', async(req, res, next) => {
-    var apikey = req.query.apikey
-    if (!apikey) return res.json(res.sendFile(invalidKey))
-    if(listkey.includes(apikey)){
-    try {
-        var options = {
-            url: "http://results.dogpile.com/serp?qc=images&q= " + "Husbu",
-            method: "GET",
-            headers: {
-                "Accept": "text/html",
-                "User-Agent": "Chrome"
-            }
-        }
-        request(options, function(error, response, responseBody) {
-            if (error) return
-
-            $ = cheerio.load(responseBody)
-            var links = $(".image a.link")
-            var cari = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"))
-            if (!cari.length) return
-            var hasil = cari[Math.floor(Math.random() * cari.length)]
-        res.json({
-              status: true,
-              code: 200,
-              creator: `${creator}`,
-              result: hasil
-            })
-        })
-    } catch (e) {}
-    } else {
-      res.json(loghandler.invalidKey)
-    }
-});
-
-
-router.get('/wallpaper/kpop', async(req, res, next) => {
-    var apikey = req.query.apikey
-    if (!apikey) return res.json(res.sendFile(invalidKey))
-    if(listkey.includes(apikey)){
-    try {
-        var options = {
-            url: "http://results.dogpile.com/serp?qc=images&q= " + "Kpop",
-            method: "GET",
-            headers: {
-                "Accept": "text/html",
-                "User-Agent": "Chrome"
-            }
-        }
-        request(options, function(error, response, responseBody) {
-            if (error) return
-
-            $ = cheerio.load(responseBody)
-            var links = $(".image a.link")
-            var cari = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"))
-            if (!cari.length) return
-            var hasil = cari[Math.floor(Math.random() * cari.length)]
-        res.json({
-              status: true,
-              code: 200,
-              creator: `${creator}`,
-              result: hasil
-            })
-        })
-    } catch (e) {}
-    } else {
-      res.json(loghandler.invalidKey)
-    }
-});
-
-
-router.get('/anime/nekonime', async(req, res, next) => {
-    var apikey = req.query.apikey
-    if (!apikey) return res.json(res.sendFile(invalidKey))
-    if(listkey.includes(apikey)){
-    try {
-        var options = {
-            url: "http://results.dogpile.com/serp?qc=images&q= " + "Nekonime",
-            method: "GET",
-            headers: {
-                "Accept": "text/html",
-                "User-Agent": "Chrome"
-            }
-        }
-        request(options, function(error, response, responseBody) {
-            if (error) return
-
-            $ = cheerio.load(responseBody)
-            var links = $(".image a.link")
-            var cari = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"))
-            if (!cari.length) return
-            var hasil = cari[Math.floor(Math.random() * cari.length)]
-        res.json({
-              status: true,
-              code: 200,
-              creator: `${creator}`,
-              result: hasil
-            })
-        })
-    } catch (e) {}
-    } else {
-      res.json(loghandler.invalidKey)
-    }
-});
-
 router.get('/anime/manga', async (req, res, next) => {
         var Apikey = req.query.apikey,
 	    search = req.query.search
@@ -2135,96 +2007,313 @@ router.get("/photooxy/butterfly", async(req, res, next) => {
 /*
 @ TEXTPROME
 */
+router.get('/textpro/logo-wolf', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-wolf-logo-black-white-937.html", [
+    text, text2
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
 
-    router.get('/textmaker', async (req, res, next) => {
-        var theme = req.query.theme,
-             text = req.query.text,
-             text2 = req.query.text2,
-             text3 = req.query.text3,
-             apikey = req.query.apikey;
-        
-	if(!apikey) return res.json(res.sendFile(invalidKey))
-    if(listkey.includes(apikey)){
-        if (!theme) return res.json(loghandler.nottheme)
-        if (theme != 'logo-wolf' && theme != 'natural-leaves') return res.json(loghandler.notheme)
-        if (!text) return res.json(loghandler.nottext)
+router.get('/textpro/natural-leaves', async(req, res, next) => {
 
-        if (theme == 'logo-wolf') {
-        	if (!text2) return res.json(loghandler.nottext2)
-            try {
-            request.post({
-                url: "https://textpro.me/create-wolf-logo-black-white-937.html",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `text_1=${text}&text_2=${text2}&login=OK`,
-                }, (e,r,b) => {
-                    if (!e) {
-                        $ = cheerio.load(b)
-                        $(".thumbnail").find("img").each(function() {
-                            h = $(this).attr("src")
-                            var result = "https://textpro.me/"+h
-                            fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=93f5c8966cfaf3ca19051ee9f85c14f3&image=${result}&name=${randomTextNumber}`))
-                                .then(response => response.json())
-                                .then(data => {
-                                    var urlnya = data.data.url,
-                                        delete_url = data.data.delete_url;
-                                        res.json({
-                                            status : true,
-                                            creator : `${creator}`,
-                                            message : `jangan lupa follow ${creator}`,
-                                            result:{
-                                                url:urlnya,
-                                                delete_url: delete_url,
-                                                info: 'url akan hilang setelah 2 menit'
-                                            }
-                                        })
-                                })
-                        })
-                    }
-                })
-                } catch (e) {
-                	console.log(e);
-                res.json(loghandler.error)
-                }
-                } else if (theme == 'natural-leaves') {
-            request.post({
-                url: "https://textpro.me/natural-leaves-text-effect-931.html",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `text_1=${text}&login=OK`,
-                }, (e,r,b) => {
-                    if (!e) {
-                        $ = cheerio.load(b)
-                        $(".thumbnail").find("img").each(function() {
-                            h = $(this).attr("src")
-                            var result = "https://textpro.me/"+h
-                            fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=${randomTextNumber}`))
-                                .then(response => response.json())
-                                .then(data => {
-                                    var urlnya = data.data.url,
-                                        delete_url = data.data.delete_url;
-                                        res.json({
-                                            status : true,
-                                            creator : `${creator}`,
-                                            message : `jangan lupa follow ${creator}`,
-                                            result:{
-                                                url:urlnya,
-                                                delete_url: delete_url,
-                                                info: 'url akan hilang setelah 2 menit'
-                                            }
-                                        })
-                                })
-                        })
-                    }
-                }) 
-        } else {
-            res.json(loghandler.error)
-        }
-})
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/natural-leaves-text-effect-931.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/logo-wolf2', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-wolf-logo-galaxy-online-936.html", [
+    text, text2
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/logo-wolf', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/matrix-style-text-effect-online-884.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/logo-wolf', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/firework-sparkle-text-effect-930.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/thunder', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/thunder-text-effect-online-881.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/black-pink', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/drop-water', async(req, res, next) => {
 
 
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/dropwater-text-effect-872.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/christmas', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-a-christmas-holiday-snow-text-effect-1007.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/3d-gradient', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/3d-gradient-text-effect-online-free-1002.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/maker/porn-hub', async (req, res, next) => {
+     const apikey = req.query.apikey;
+
+  const text = req.query.text1;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext1)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+     if(listkey.includes(apikey)) {
+    let hasil = 'https://api.zeks.xyz/api/phlogo?text1=${text}&text2=${text2}&apikey=apivinz' 
+    data = await fetch(hasil).then(v => v.buffer())
+    await fs.writeFileSync(__path +'/tmp/phlogo.jpeg', data)
+    res.sendFile(__path +'/tmp/phlogo.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
 
 /*
 @AKHIR TEXTPRO ME
@@ -2961,6 +3050,23 @@ router.get('/maker/pubgtourserti5', async(req, res, next) => {
     res.json(loghandler.invalidKey)
   }
 });
+router.get('/welcomeimage', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  const url = req.query.url;
+  if(!text) return res.json(loghandler.nottext)
+  if(!url) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  let hasil = `https://lolhuman.herokuapp.com/api/welcomeimage?apikey=muzharzain&img=${url}&text=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/welcomeimage.jpeg', data)
+        res.sendFile(__path+'/tmp/welcomeimage.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
 router.get('/maker/emoji2png', async(req, res, next) => {
   const apikey = req.query.apikey;
   const Emoji = req.query.text;
