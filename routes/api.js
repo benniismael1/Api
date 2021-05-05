@@ -30,10 +30,6 @@ var {
 } = require('./../lib');
 
 var {
-  artinama
-} = require("./../lib/utils");
-
-var {
   pShadow,
   pRomantic,
   pSmoke,
@@ -78,6 +74,7 @@ var {
 } = require('./../lib/utils/tools');
 
 var tebakGambar = require('./../lib/utils/tebakGambar');
+var artinama = require('./../lib/utils/artinama');
 
 var cookie = process.env.COOCKIE
 /*
