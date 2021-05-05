@@ -26,9 +26,12 @@ var { fetchJson } = require(__path + '/lib/fetcher.js');
 var options = require(__path + '/lib/options.js');
 var {
 	Searchnabi,
-        Artinama,
 	Gempa
 } = require('./../lib');
+
+var {
+  artinama
+} = require("./../lib/utils");
 
 var {
   pShadow,
