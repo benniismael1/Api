@@ -1709,11 +1709,11 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
 
 router.get("/artinama", async (req, res) => {
   var apikey = req.query.apikey;
-  var nama = req.query.q;
+  var nama = req.query.nama;
 
   if(!apikey) return res.json(res.sendFile(invalidKey))
   if(listkey.includes(apikey)){
-  if (!nama) return res.json(respon.param);
+  if (!nama) return res.json(loghandler.notnama);
   ArtiNama(nama)
     .then((data) => {
       res.send(data);
