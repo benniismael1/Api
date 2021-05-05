@@ -1729,7 +1729,7 @@ res.json(loghandler.invalidKey)
 
 router.get('/artimimpi', async (req, res, next) => {
      var Apikey = req.query.apikey,
-          Mimpi = req.query.nama
+          Mimpi = req.query.mimpi
             
 	if(!Apikey) return res.sendFile(invalidKey)
 	if(listkey.includes(Apikey)){
