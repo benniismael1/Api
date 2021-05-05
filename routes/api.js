@@ -1705,11 +1705,11 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
 
 router.get('/artinama', async (req, res, next) => {
      var Apikey = req.query.apikey,
-             q = req.query.q
+           Nama = req.query.q
             
 	if(!Apikey) return res.sendFile(invalidKey)
 	if(listkey.includes(Apikey)){
-    if (!q) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter q "})
+    if (!nama) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter q "})
 
        fetch(encodeURI(`https://api.masagus.space/primbon/artinama?q=${q}`))
         .then(response => response.json())
@@ -1729,7 +1729,7 @@ res.json(loghandler.invalidKey)
 
 router.get('/artimimpi', async (req, res, next) => {
      var Apikey = req.query.apikey,
-              q = req.query.q
+          Mimpi = req.query.q
             
 	if(!Apikey) return res.sendFile(invalidKey)
 	if(listkey.includes(Apikey)){
