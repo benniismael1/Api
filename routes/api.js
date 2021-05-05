@@ -1705,7 +1705,7 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
 
 router.get('/artinama', async (req, res, next) => {
      var Apikey = req.query.apikey,
-           Nama = req.query.q
+           Nama = req.query.nama
             
 	if(!Apikey) return res.sendFile(invalidKey)
 	if(listkey.includes(Apikey)){
@@ -1729,7 +1729,7 @@ res.json(loghandler.invalidKey)
 
 router.get('/artimimpi', async (req, res, next) => {
      var Apikey = req.query.apikey,
-          Mimpi = req.query.q
+          Mimpi = req.query.nama
             
 	if(!Apikey) return res.sendFile(invalidKey)
 	if(listkey.includes(Apikey)){
