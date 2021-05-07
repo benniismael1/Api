@@ -8,7 +8,7 @@ var zahirr = db.get("zahirr");
 	console.log('')  
 }
  
-var creator = "BYYSAYANG"
+var creator = "Yuda Xwer"
 var secure = require('ssl-express-www');
 var cors = require('cors');
 var fetch = require('node-fetch');
@@ -175,7 +175,7 @@ Akhir Pesan Error
 
 router.use(favicon(__path + "/views/favicon.ico"));
 
-const listkey = ["beniismael", "manogay"];
+const listkey = ["benniismael", "beniganteng"];
 
 router.post("/apikey", async (req, res, next) => {
   const key = req.query.key;
@@ -1703,54 +1703,6 @@ router.get('/kuis/tebakGambar', async (req, res, next) => {
   }
 })
 
-router.get('/artinama', async (req, res, next) => {
-     var Apikey = req.query.apikey,
-           Nama = req.query.nama
-            
-	if(!Apikey) return res.sendFile(invalidKey)
-	if(listkey.includes(Apikey)){
-    if (!nama) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter q "})
-
-       fetch(encodeURI(`https://api.masagus.space/primbon/artinama?q=${nama}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-} else {
-res.json(loghandler.invalidKey)
-}
-})
-
-router.get('/artimimpi', async (req, res, next) => {
-     var Apikey = req.query.apikey,
-          Mimpi = req.query.mimpi
-            
-	if(!Apikey) return res.sendFile(invalidKey)
-	if(listkey.includes(Apikey)){
-    if (!mimpi) return res.json({ status : false, creator : `BYYsayang`, message : "masukan parameter mimpi "})
-
-       fetch(encodeURI(`https://api.masagus.space/primbon/artimimpi?q=${mimpi}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-} else {
-res.json(loghandler.invalidKey)
-}
-})
-
 /**
 * @Maker
 **/
@@ -2289,6 +2241,34 @@ router.get('/textpro/drop-water', async(req, res, next) => {
   }
 });
 
+router.get('/textpro/christmas', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-a-christmas-holiday-snow-text-effect-1007.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
 router.get('/textpro/3d-gradient', async(req, res, next) => {
   const apikey = req.query.apikey;
   const text = req.query.text;
@@ -2315,92 +2295,24 @@ router.get('/textpro/3d-gradient', async(req, res, next) => {
   }
 });
 
-router.get('/textpro', async (req, res, next) => {
-    var theme = req.query.theme,
-         text = req.query.text,
-         text2 = req.query.text2,
-         text3 = req.query.text3,
-         apikeyInput = req.query.apikey;
-    
-if(!Apikey) return res.json(res.sendFile(invalidKey))
-if(listkey.includes(Apikey)){
-    if (!theme) return res.json(loghandler.nottheme)
-    if (theme != 'porn-hub' && theme != 'christmas') return res.json(loghandler.notheme)
-    if (!text) return res.json(loghandler.nottext)
+router.get('/maker/porn-hub', async (req, res, next) => {
+     const apikey = req.query.apikey;
 
-    if (theme == 'porn-hub') {
-        if (!text2) return res.json(loghandler.nottext2)
-            try {
-        request.post({
-            url: "https://textpro.me/pornhub-style-logo-online-generator-free-977.html",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `text_1=${text}&text_2=${text2}&login=OK`,
-            }, (e,r,b) => {
-                if (!e) {
-                    $ = cheerio.load(b)
-                    $(".image p402_hide").find("id").each(function() {
-                        h = $(this).attr("src")
-                        var result = "https://textpro.me/"+h
-                        fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=93f5c8966cfaf3ca19051ee9f85c14f3&image=${result}&name=${randomTextNumber}`))
-                            .then(response => response.json())
-                            .then(data => {
-                                var urlnya = data.data.url,
-                                    delete_url = data.data.delete_url;
-                                    res.json({
-                                        status : true,
-                                        message : `jangan lupa follow ${creator}`,
-                                        result:{
-                                            url:urlnya,
-                                            delete_url: delete_url,
-                                            info: 'url akan hilang setelah 2 menit'
-                                        }
-                                    })
-                            })
-                    })
-                }
-            })
-            } catch (e) {
-                console.log(e);
-            res.json(loghandler.error)
-            }
-    } else if (theme == 'christmas') {
-        if (!text) return res.json(loghandler.nottext)
-        request.post({
-            url: "https://textpro.me/create-a-christmas-holiday-snow-text-effect-1007.html",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `text_1=${text}&login=OK`,
-            }, (e,r,b) => {
-                if (!e) {
-                    $ = cheerio.load(b)
-                    $(".thumbnail").find("img").each(function() {
-                        h = $(this).attr("src")
-                        var result = "https://textpro.me/"+h
-                        fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=0f2313a7e5278727e4fe969767cbdce6&image=${result}&name=${randomTextNumber}`))
-                            .then(response => response.json())
-                            .then(data => {
-                                var urlnya = data.data.url,
-                                    delete_url = data.data.delete_url;
-                                    res.json({
-                                        status : true,
-                                        creator : `${creator}`,
-                                        message : `jangan lupa follow ${creator}`,
-                                        result:{
-                                            url:urlnya,
-                                            delete_url: delete_url,
-                                            info: 'url akan hilang setelah 2 menit'
-                                        }
-                                    })
-                            })
-                    })
-                }
-            }) 
-    } else {
-        res.json(loghandler.error)
-    }
+  const text = req.query.text1;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(!text) return res.json(loghandler.nottext1)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+     if(listkey.includes(apikey)) {
+    let hasil = 'https://api.zeks.xyz/api/phlogo?text1=${text}&text2=${text2}&apikey=apivinz' 
+    data = await fetch(hasil).then(v => v.buffer())
+    await fs.writeFileSync(__path +'/tmp/phlogo.jpeg', data)
+    res.sendFile(__path +'/tmp/phlogo.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
 });
 
 /*
