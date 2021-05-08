@@ -1396,6 +1396,7 @@ router.get('/artinama', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
+                author: 'BYYSAYANG',
                  result
              })
          })
@@ -1420,6 +1421,7 @@ router.get('/artimimpi', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
+               author: 'BYYSAYANG',
                  result
              })
          })
