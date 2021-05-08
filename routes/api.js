@@ -1384,7 +1384,7 @@ res.json(loghandler.invalidKey)
 })
 
 router.get('/artinama', async (req, res, next) => {
-        var apikey = req.query.apikey,
+        var Apikey = req.query.apikey,
             nama = req.query.nama
             
 	if(!Apikey) return res.json(res.sendFile(invalidKey))
@@ -1408,7 +1408,7 @@ res.json(loghandler.invalidKey)
 })
 
 router.get('/artimimpi', async (req, res, next) => {
-        var apikey = req.query.apikey,
+        var Apikey = req.query.apikey,
             nama = req.query.nama
             
 	if(!Apikey) return res.json(res.sendFile(invalidKey))
@@ -1432,8 +1432,9 @@ res.json(loghandler.invalidKey)
 })
 
 router.get('/simsimi', async (req, res, next) => {
-        var apikey = req.query.apikey
+        var Apikey = req.query.apikey
             text = req.query.text
+
 	if(!Apikey) return res.json(res.sendFile(invalidKey))
 	if(listkey.includes(Apikey)){
         if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
