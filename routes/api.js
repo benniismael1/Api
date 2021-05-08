@@ -1389,7 +1389,7 @@ router.get('/artinama', async (req, res, next) => {
             
 	if(!Apikey) return res.json(res.sendFile(invalidKey))
 	if(listkey.includes(Apikey)){
-    if (!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+    if (!nama) return res.json({ status : false, message : "masukan parameter url"})
 
        fetch(encodeURI(`https://videfikri.com/api/primbon/artinama/?nama=${nama}`))
         .then(response => response.json())
@@ -1414,7 +1414,7 @@ router.get('/artimimpi', async (req, res, next) => {
             
 	if(!Apikey) return res.json(res.sendFile(invalidKey))
 	if(listkey.includes(Apikey)){
-    if (!mimpi) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+    if (!mimpi) return res.json({ status : false, message : "masukan parameter url"})
 
        fetch(encodeURI(`https://videfikri.com/api/primbon/artimimpi/?mimpi=${mimpi}`))
         .then(response => response.json())
