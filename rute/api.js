@@ -41,7 +41,8 @@ var {
   pDoubleHeart,
   pCoffeCup,
   pLoveText,
-  pButterfly
+  pButterfly,
+  pPornhub
 } = require("./../lib/utils/photooxy");
 
 var {
@@ -1961,6 +1962,32 @@ router.get("/photooxy/glitch", async(req, res, next) => {
   if(!apikey) return res.json(res.sendFile(invalidKey))
   if(listkey.includes(apikey)){
   pGlitch(text1, text2)
+    .then((data) => {
+      const result = {
+        status: true,
+        code: 200,
+        creator: `${creator}`,
+        result: data.url
+      }
+      res.json(result)
+    })
+    .catch((error) => {
+      res.json(error)
+    });
+    } else {
+    	res.json(loghandler.invalidKey)
+    }
+});
+
+router.get("/photooxy/pornhub", async(req, res, next) => {
+  const text1 = req.query.text1;
+  const text2 = req.query.text2;
+  const apikey = req.query.apikey;
+  if(!text1) return res.json(loghandler.nottext1)
+  if(!text2) return res.json(loghandler.nottext2)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  pPornhub(text1, text2)
     .then((data) => {
       const result = {
         status: true,
