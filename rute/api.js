@@ -2370,7 +2370,7 @@ router.get('/textpro/3d-gradient', async(req, res, next) => {
   }
 });
 
-router.get('/maker/porn-hub', async (req, res, next) => {
+router.get('/textpro/pornhub', async (req, res, next) => {
      const apikey = req.query.apikey;
 
   const text = req.query.text1;
